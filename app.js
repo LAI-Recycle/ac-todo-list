@@ -10,6 +10,7 @@ const routes = require('./routes')
 require('./config/mongoose')
 
 const app = express()
+const PORT = process.env.PORT || 3000
 
 //主程式啟用 Handlebars
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
@@ -25,7 +26,7 @@ app.use(methodOverride('_method'))
 // 將 request 導入路由器
 app.use(routes)
 
-
-app.listen( 3000 , ()=>{
-  console.log("app is running on http://localhost:3000.")
+//記得使用``框起${}
+app.listen( PORT , ()=>{
+  console.log(`app is running on http://localhost:${PORT}.`) 
 })
